@@ -1,15 +1,13 @@
-# coding: utf-8
+# echo-client.py
 
 import socket
 
-hote = "https://icegeo.online/"
-port = 55032
+HOST = "193.32.126.225"  # The server's hostname or IP address
+PORT = 55032  # The port used by the server
 
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socket.connect((hote, port))
-print ("Connection on {}".format(port))
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    s.sendall(b"Hello, world")
+    data = s.recv(1024)
 
-socket.send("Hey my name is Olivier!")
-
-print ("Close")
-socket.close()
+print(f"Received {data!r}")

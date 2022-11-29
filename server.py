@@ -1,20 +1,18 @@
-# coding: utf-8
+# echo-server.py
 
 import socket
 
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socket.bind(('', 55032))
+HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
+PORT = 55032  # Port to listen on (non-privileged ports are > 1023)
 
-print("En Écoute...")
-while True:
-        socket.listen(5)
-        client, address = socket.accept()
-        print ("{} connected".format( address ))
-
-        response = client.recv(255)
-        if response != "":
-                print (response)
-
-print ("Close")
-client.close()
-stock.close()
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((HOST, PORT))
+    s.listen()
+    conn, addr = s.accept()
+    with conn:
+        print(f"Connected by {addr}")
+        while True:
+            data = conn.recv(1024)
+            if not data:
+                break
+            conn.sendall(data)
