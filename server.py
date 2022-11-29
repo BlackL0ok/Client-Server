@@ -1,19 +1,30 @@
-# coding: utf-8
-
 import socket
 
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socket.bind(('', 55032))
 
-while True:
-        socket.listen(5)
-        client, address = socket.accept()
-        print ("{} connected".format( address ))
+def server_program():
+    # get the hostname
+    host = "0.0.0.0" #socket.gethostname()
+    port = 55032  # initiate port no above 1024
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # get instance
+    # look closely. The bind() function takes tuple as argument
+    server_socket.bind((host, port))  # bind host address and port together
 
-        response = client.recv(255)
-        if response != "":
-                print (response)
+    # configure how many client the server can listen simultaneously
+    server_socket.listen(2)
+    conn, address = server_socket.accept()  # accept new connection
+    print("Connection from: " + str(address))
+    while True:
+        # receive data stream. it won't accept data packet greater than 1024 bytes
+        data = conn.recv(1024).decode()
+        if not data:
+            # if data is not received break
+            break
+        print("from connected user: " + str(data))
+        data = input(' -> ')
+        conn.send(data.encode())  # send data to the client
 
-print ("Close")
-client.close()
-stock.close()
+    conn.close()  # close the connection
+
+
+if __name__ == '__main__':
+    server_program()
