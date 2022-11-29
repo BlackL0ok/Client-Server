@@ -2,8 +2,8 @@
 
 import socket
 
-hote = "192.168.122.1"
-port = 8080
+hote = "https://icegeo.online/"
+port = 55032
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.connect((hote, port))
