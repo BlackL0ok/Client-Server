@@ -1,13 +1,16 @@
-# echo-client.py
+
+# coding: utf-8
 
 import socket
 
-HOST = "193.32.126.225"  # The server's hostname or IP address
-PORT = 55032  # The port used by the server
+hote = "localhost"
+port = 15555
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    s.sendall(b"Hello, world")
-    data = s.recv(1024)
+socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+socket.connect((hote, port))
+print "Connection on {}".format(port)
 
-print(f"Received {data!r}")
+socket.send("Hey my name is Olivier!")
+
+print "Close"
+socket.close()
