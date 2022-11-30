@@ -1,7 +1,6 @@
 import socket, Client_Classe
 
 def client_program():
-
     client_socket = socket.socket()  # instantiate
 
     message = input(" -> ")  # take input
@@ -18,5 +17,5 @@ def client_program():
 
 
 if __name__ == '__main__':
-    action = Client_Classe.action()
+    action = Client_Classe.action("193.32.126.225" ,55032)
     client_program()
