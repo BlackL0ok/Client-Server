@@ -11,12 +11,18 @@ class action:
         try: 
             client_socket.connect((self.host, self.port))  # connect to the server
             message = "ping"
-            time.sleep(0.2)
-            while message.lower().strip() != 'bye':
+            tentative = 0
+            while tentative <= 3:
+                tentative += 1
                 client_socket.send(message.encode())  # send message
                 data = client_socket.recv(1024).decode()  # receive response
                 print('Received from server: ' + data)  # show in terminal
-            return(1)
+            if data == "pong":
+                print("Connexion: ok")
+                return(1)
+            else:
+                print("Erreur lors de dialogiue")
+                return(0)
         except socket.timeout as erreur:
             print("Délai de connexion dépassé")
             return(0)

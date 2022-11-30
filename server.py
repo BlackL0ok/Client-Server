@@ -19,12 +19,9 @@ def server_program():
         data = conn.recv(1024).decode()
         print("from connected user: " + str(data))
         if data == "ping":
-            # if data is not received
-            data = "pong"
-            conn.send(data.encode())  # send data to the client
+            msg = "pong"
+            conn.send(msg.encode())  # send data to the client
         if not data: break;
-        data = input(' -> ')
-        conn.send(data.encode())  # send data to the client
 
     conn.close()  # close the connection
 
