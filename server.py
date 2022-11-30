@@ -20,7 +20,6 @@ def server_program():
             # if data is not received
             data = "pong"
             conn.send(data.encode())  # send data to the client
-            break
         print("from connected user: " + str(data))
         data = input(' -> ')
         conn.send(data.encode())  # send data to the client
