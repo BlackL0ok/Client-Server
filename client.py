@@ -1,12 +1,8 @@
-import socket
+import socket, Client_Classe
 
 def client_program():
-    
-    host = "193.32.126.225"  # as both code is running on same pc
-    port = 55032  # socket server port number
 
     client_socket = socket.socket()  # instantiate
-    client_socket.connect((host, port))  # connect to the server
 
     message = input(" -> ")  # take input
 
@@ -22,4 +18,5 @@ def client_program():
 
 
 if __name__ == '__main__':
+    action = Client_Classe.action()
     client_program()
