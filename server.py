@@ -11,6 +11,7 @@ def server_program():
 
     # configure how many client the server can listen simultaneously
     server_socket.listen(2)
+    print("En attente d'une connection...")
     conn, address = server_socket.accept()  # accept new connection
     print("Connection from: " + str(address))
     while True:
