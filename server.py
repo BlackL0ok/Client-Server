@@ -21,6 +21,7 @@ def server_program():
         if data == "ping":
             msg = "pong"
             conn.send(msg.encode())  # send data to the client
+            print("Connexion seems to be ok !")
         if not data: break;
 
     conn.close()  # close the connection
