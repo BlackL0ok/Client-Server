@@ -25,7 +25,8 @@ def server_program():
         if not data: break;
 
     conn.close()  # close the connection
-
+    server_socket.close()
+    
 
 if __name__ == '__main__':
     server_program()
