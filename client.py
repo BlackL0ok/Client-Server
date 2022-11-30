@@ -1,5 +1,6 @@
-import socket, Client_Classe
-
+import socket
+from Client_Classe import *
+"""
 def client_program():
     client_socket = socket.socket()  # instantiate
 
@@ -15,7 +16,8 @@ def client_program():
 
     client_socket.close()  # close the connection
 
-
+"""
 if __name__ == '__main__':
-    action = Client_Classe.action("193.32.126.225" ,55032)
-    client_program()
+    action = action("193.32.126.225" ,55032)
+    if action.connexion() == True:
+        action.ping()
