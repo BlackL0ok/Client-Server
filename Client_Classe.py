@@ -23,6 +23,9 @@ class action:
         message = "ping"
         client_socket.send(message.encode())  # send message
         self.data = client_socket.recv(1024).decode()  # receive response
+        print('Received from server: ' + self.data)  # show in terminal
+
+        message = input(" -> ")  # again take input
         if self.data == "pong":
             return(1)
         else:
