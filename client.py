@@ -1,5 +1,11 @@
 from Client_Classe import *
-"""#
+
+if __name__ == '__main__':
+    action = action("193.32.126.225" ,55032)
+    action.connexion()
+
+
+"""
 def client_program():
     client_socket = socket.socket()  # instantiate
 
@@ -16,8 +22,3 @@ def client_program():
     client_socket.close()  # close the connection
 
 """
-
-if __name__ == '__main__':
-    action = action("193.32.126.225" ,55032)
-    if action.connexion() == True:
-        action.ping()
