@@ -17,12 +17,13 @@ def server_program():
     while True:
         # receive data stream. it won't accept data packet greater than 1024 bytes
         data = conn.recv(1024).decode()
+        if not data: break;
+        print("from connected user: " + str(data))
         if data == "ping":
             msg = "pong"
             conn.send(msg.encode())  # send data to the client
-            print("Connexion seems to be ok !")
-        print("from connected user: " + str(data))
-        if not data: break;
+            print("Connection seems to be good !")
+        elif not data: break;
 
     conn.close()  # close the connection
 
