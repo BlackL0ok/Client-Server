@@ -1,4 +1,4 @@
-import socket
+import socket,Class_sql, os
 
 
 def server_program():
@@ -29,4 +29,12 @@ def server_program():
 
 
 if __name__ == '__main__':
+    if os.path.exists("databank"):
+        print("Création")
+        sql.create_file("databank")
+        column_table_login_user = [("id","integer PRIMARY KEY AUTOINCREMENT"),("User","text"),("Password","text")]
+        sql.create_table("login_user",column_table_login_user)
+        column_table_user_data = [("id","integer PRIMARY KEY AUTOINCREMENT"),("User","text"),("Password","text"),("Description","text"),("Right","integer")]
+        sql.create_table("User_data",column_table_user_data)
+        
     server_program()
