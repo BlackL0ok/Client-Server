@@ -1,5 +1,5 @@
-import socket,Class_sql, os
-
+import socket, os
+from Server_Classe import Sql as sql
 
 def server_program():
     # get the hostname
