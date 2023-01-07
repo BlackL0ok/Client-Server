@@ -4,7 +4,7 @@ from  Server_Classe import Sql as sql
 def server_program():
     # get the hostname
     host = "0.0.0.0" #socket.gethostname()
-    port = 55032  # initiate port no above 1024
+    port = 55264  # initiate port no above 1024
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # get instance
     # look closely. The bind() function takes tuple as argument
     server_socket.bind((host, port))  # bind host address and port together
@@ -29,6 +29,7 @@ def server_program():
 
 
 if __name__ == '__main__':
+    sql = sql("databank")
     if os.path.exists("databank"):
         print("Création")
         sql.create_file("databank")
