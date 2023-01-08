@@ -1,9 +1,10 @@
 import socket, os
-from  Server_Classe import Sql as sql
+import Server_Classe
 
 def server_program():
+    outils = Server_Classe.Server_outils()
     # get the hostname
-    host = "0.0.0.0" #socket.gethostname()
+    host = "192.168.1.45" #socket.gethostname()
     port = 55264  # initiate port no above 1024
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # get instance
     # look closely. The bind() function takes tuple as argument
@@ -11,25 +12,26 @@ def server_program():
 
     # configure how many client the server can listen simultaneously
     server_socket.listen(2)
-    print("En attente d'une connection...")
-    conn, address = server_socket.accept()  # accept new connection
-    print("Connection from: " + str(address))
+
     while True:
+        print("En attente d'une connection...")
+        conn, address = server_socket.accept()  # accept new connection
+    
+        print("Connection from: " + str(address))
         # receive data stream. it won't accept data packet greater than 1024 bytes
         data = conn.recv(1024).decode()
-        if not data: break;
         print("from connected user: " + str(data))
         if data == "ping":
             msg = "pong"
             conn.send(msg.encode())  # send data to the client
             print("Connection seems to be good !")
-        elif not data: break;
+    ## connexion ok 
 
     conn.close()  # close the connection
 
 
 if __name__ == '__main__':
-    sql = sql("databank")
+    sql = Server_Classe.Sql("databank")
     if os.path.exists("databank"):
         print("Création")
         sql.create_file("databank")
