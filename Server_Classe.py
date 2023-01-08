@@ -1,4 +1,4 @@
-import sqlite3, socket, os
+import sqlite3, socket, os, rsa
 
 class Sql:
     def __init__(self,name_file):
