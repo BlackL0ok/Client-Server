@@ -14,6 +14,7 @@ def server_program():
     server_socket.listen(2)
 
     while True:
+        checked = []
         print("En attente d'une connection...")
         conn, address = server_socket.accept()  # accept new connection
     
@@ -21,12 +22,13 @@ def server_program():
         # receive data stream. it won't accept data packet greater than 1024 bytes
         data = conn.recv(1024).decode()
         print("from connected user: " + str(data))
-        if data == "ping":
+        if data == "ping" and address[0] not in checked:
+            checked.append(address[0])
             msg = "pong"
             conn.send(msg.encode())  # send data to the client
             print("Connection seems to be good !")
     ## connexion ok 
-
+    data = conn.recv(1024).decode()
     conn.close()  # close the connection
 
 
