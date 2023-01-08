@@ -28,8 +28,7 @@ def server_program():
             conn.send(msg.encode())  # send data to the client
             print("Connection seems to be good !")
     ## connexion ok 
-    data = conn.recv(1024).decode()
-    conn.close()  # close the connection
+        conn.close()  # close the connection
 
 
 if __name__ == '__main__':
