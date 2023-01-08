@@ -27,7 +27,11 @@ def server_program():
             msg = "pong"
             conn.send(msg.encode())  # send data to the client
             print("Connection seems to be good !")
+            conn.send(outils.publicKey)
     ## connexion ok 
+        if data[:7] == "login: ":
+            print("ID:"+ data[6:])
+
         conn.close()  # close the connection
 
 
