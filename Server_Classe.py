@@ -4,8 +4,7 @@ class Sql:
     def __init__(self,name_file):
         self.sql3 = sqlite3.connect(f"{name_file}")
         self.cursor = self.sql3.cursor()
-        self.publicKey = self.key[0]
-        self.privateKey = self.key[1]
+        self.publicKey, self.privateKey = rsa.newkeys(512)
         
     def create_file(self,name_file):
         try:
