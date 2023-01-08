@@ -4,7 +4,7 @@ import Server_Classe
 def server_program():
     outils = Server_Classe.Server_outils()
     # get the hostname
-    host = "192.168.1.45" #socket.gethostname()
+    host = "" #socket.gethostname()
     port = 55264  # initiate port no above 1024
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # get instance
     # look closely. The bind() function takes tuple as argument
