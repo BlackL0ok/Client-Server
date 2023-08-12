@@ -1,2 +1,2 @@
 # Client-Server
-Connexion et partage de données entre server BUBU et client
+Share data with private server to avoid lost of passwords
